@@ -59,11 +59,14 @@
       var arrowY = new THREE.ArrowHelper( y, origin, arrowSize, colorG );
       var arrowZ = new THREE.ArrowHelper( z, origin, arrowSize, colorB );
       
-      var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
-      var coneGeometry = new THREE.ConeGeometry(3, 2, 10);
+      //Creacion del Cono 
+      var material = new THREE.LineBasicMaterial( { color : 0xff0000 } ); //Se le otorga el material al cono
+      var coneGeometry = new THREE.ConeGeometry(3, 3, 10); //Se le dan valores al cono en alura, Diametro y lados
       // Create the final object to add to the scene
-      var cone = new THREE.Mesh( coneGeometry, material );
+      var cone = new THREE.Mesh( coneGeometry, material ); 
       scene.add( cone );
+      cone.rotation.set(Math.PI/2, 0, Math.PI/2); //Se le da una rotacion para que este en la posicion indicada 
+	  
                
 	  	//AGREGAR A LA ESCENA
       scene.add( gridHelperXZ );

@@ -58,12 +58,22 @@
       var arrowX = new THREE.ArrowHelper( x, origin, arrowSize, colorR );
       var arrowY = new THREE.ArrowHelper( y, origin, arrowSize, colorG );
       var arrowZ = new THREE.ArrowHelper( z, origin, arrowSize, colorB );
+
+
+      //Creacion del cono 
+      var altura = 3;   //Se el otorga por parte los valores a altura, diamtreo y lados
+      var diametro = 3;
+      var lados = 10;
+
+      var coneGeometry = new THREE.ConeGeometry(altura, diametro, lados); //Se crea el cono 
+      var basicMaterial = new THREE.LineBasicMaterial( { color : 0xff0000 } ); //Se el otorga material al cono 
       
-      var material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
-      var geometry = new THREE.CubeGeometry(2, 2, 2);
-      // Create the final object to add to the scene
-      var boxObject = new THREE.Mesh( geometry, material );
-      scene.add( boxObject );
+      var cone = new THREE.Mesh(coneGeometry, basicMaterial); 
+      scene.add(cone);
+      cone.rotation.set(Math.PI/2, 0, Math.PI/2); //Se rota en cono quedando sobre el eje Z 
+      cone.position.z=-1*(altura/2); //Se cambia de posicion el Cono
+      cone.rotation.set(Math.PI/2, 0, Math.PI/2); //Nuevamente una rotacion para modificar el lugar del cono 
+      var eje  = new THREE.Vector3 (0,1,0); 
                
 	  	//AGREGAR A LA ESCENA
       scene.add( gridHelperXZ );
